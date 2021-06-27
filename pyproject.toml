@@ -1,0 +1,66 @@
+[tool.poetry]
+name = "social-network"
+version = "0.1.0"
+description = ""
+authors = ["draihal <draihal.a@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/draihal/social-network"
+include = ["LICENSE"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.65.2"
+uvicorn = {extras = ["standard"], version = "^0.14.0"}
+
+[tool.poetry.dev-dependencies]
+isort = "^5.9.1"
+mypy = "^0.910"
+bandit = "^1.7.0"
+black = "^21.6b0"
+flake8 = "^3.9.2"
+pytest = "^6.2.4"
+coverage = "^5.5"
+safety = "^1.10.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 79
+target_version = ['py37', 'py38', 'py39']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.mypy_cache
+  | \.pytest_cache
+  | \.venv
+  | \.vscode
+)
+'''
+
+[tool.coverage.run]
+omit = [".venv/*", "tests/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "pragma: no cover",
+  "if self.debug:",
+  "raise AssertionError",
+  "raise NotImplementedError",
+  "def __repr__",
+  "if 0:",
+  "if __name__ == .__main__.:",
+]
+
+[tool.coverage.html]
+directory = "public/coverage"
+
+[tool.isort]
+line_length = 79
+force_grid_wrap = 0
+multi_line_output = 3
+use_parentheses = true
+include_trailing_comma = true
